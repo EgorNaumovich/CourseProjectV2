@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package delivery;
+option go_package = "./";
+
+service DeliveryService {
+  rpc CreateDelivery(Delivery) returns (Response) {}
+  rpc GetDeliveries(GetRequest) returns (Response) {}
+}
+
+message Delivery {
+  string id = 1;
+  string description = 2;
+  int32 container_count = 3;
+  int32 weight = 4;
+  repeated Container containers = 5;
+  string v_id = 6;
+}
+
+message Container {
+  string id = 1;
+  string c_id = 2;
+  string origin = 3;
+  string u_id = 4;
+}
+
+message GetRequest {}
+
+message Response {
+  bool created = 1;
+  Delivery delivery = 2;
+  repeated Delivery deliveries = 3;
+}

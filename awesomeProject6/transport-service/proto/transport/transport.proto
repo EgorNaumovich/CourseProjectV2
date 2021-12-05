@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package transport;
+
+option go_package = "./";
+
+service TransportService{
+  rpc Available(Description) returns (Response){}
+}
+
+message Transport{
+  string id = 1;
+  string name = 2;
+  int32 container_capacity = 3;
+  int32 weight = 4;
+  bool available = 5;
+  string owner_id = 6;
+}
+
+message Description{
+  string id = 1;
+  string description = 2;
+  int32 container_count = 3;
+  int32 weight = 4;
+  repeated Container containers = 5;
+  string v_id = 6;
+}
+
+message Container {
+  string id = 1;
+  string c_id = 2;
+  string origin = 3;
+  string u_id = 4;
+}
+
+message Response{
+  Transport transport = 1;
+  repeated Transport transports = 2;
+}

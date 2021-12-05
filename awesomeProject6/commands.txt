@@ -1,0 +1,20 @@
+docker network create delivery-network
+
+// lists running containers
+docker ps
+
+// list availabe images
+docker images
+
+docker run --rm --net delivery-network --name transport-service -d transport-service
+
+docker run --rm -p 9090:9090 --net delivery-network --name transport-service -d transport-service
+
+docker run --rm -p 8080:8080 -d --net delivery-network --name delivery-service delivery-service
+
+// Запустить mysql & adminer tool
+cd C:\Users\Naumo\go\src\awesomeProject6\database
+docker-compose up
+
+// Join MySQL the delivery-network to enable access to it from Delivery-Service
+docker network connect delivery-network database_mysql_1

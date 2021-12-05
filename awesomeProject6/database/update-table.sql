@@ -1,0 +1,1 @@
+UPDATE Deliveries SET Deliveries.Origin="Kudykina Gora" WHERE Deliveries.Id=1

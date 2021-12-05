@@ -1,0 +1,1 @@
+INSERT INTO Deliveries (Container_Count,Weight,Description,Transport) VALUES(1,200,"Test description","No transport")
